@@ -44,9 +44,11 @@
       <v-btn class="d-none d-md-inline-block" text dark>
         Contactar
       </v-btn>
+      <router-link to="/mi-espacio">
       <v-btn class="red d-none d-md-inline-block" dark>
         Mi Espacio
       </v-btn>
+      </router-link>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list-item v-if="$store.state.auth">

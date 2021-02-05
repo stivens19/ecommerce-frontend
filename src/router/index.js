@@ -3,6 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import CategoryProducts from "../views/CategoryProducts.vue";
+import Cart from "../views/Cart.vue";
+import Pay from "../views/Pay.vue";
+import Espacio from "../views/Espacio.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -12,9 +15,24 @@ const routes = [
     component: Home,
   },
   {
+    path: "/mi-espacio",
+    name: "Espacio",
+    component: Espacio,
+  },
+  {
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/pay",
+    name: "Pay",
+    component: Pay,
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+    component: Cart,
   },
   {
     path: "/foro",

@@ -5,14 +5,7 @@
         <v-icon class="size">support</v-icon>
       </v-btn>
       <span class="logo">
-        <span class="letter">C</span>
-        <span class="letter">O</span>
-        <span class="letter">M</span>
-        <span class="letter">P</span>
-        <span class="letter">U</span>
-        <span class="letter">T</span>
-        <span class="letter">E</span>
-        <span class="letter">C</span>
+        NETFIS
       </span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
@@ -25,7 +18,6 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="mx-2" fab dark small color="red" v-bind="attrs" v-on="on">
-          <v-badge left color="red" content="1"></v-badge>
           <v-icon dark>
             shopping_cart
           </v-icon>
@@ -45,26 +37,31 @@
         <v-divider></v-divider>
 
         <v-list>
-          <v-list-item>
+          <v-list-item v-for="(product, index) in this.cart" :key="product.id">
+            <a href="#" @click="eliminarStorage(index)">X</a>
             <v-img
-              lazy-src="https://picsum.photos/id/11/10/6"
+              :lazy-src="product.image"
               max-height="50"
               max-width="50"
-              src="https://picsum.photos/id/11/500/300"
+              :src="product.image"
             ></v-img>
 
             <p class="ml-3 font-weight-medium">
-              Lenovo Yoga 510
+              {{ product.name.substr(0, 20) }}...
             </p>
-            <span class="price ml-4">$45</span>
+            <span class="price ml-4 float-right text-right"
+              >S/{{ product.price }}</span
+            >
           </v-list-item>
         </v-list>
 
         <v-card-actions>
           <v-spacer></v-spacer>
+          <router-link class="text-decoration-none d-block" to="/cart">
           <v-btn class="d-block" color="error" dark large>
-            Crear Orden
+            Procesar
           </v-btn>
+          </router-link>
         </v-card-actions>
       </v-card>
     </v-menu>
@@ -119,11 +116,32 @@
 <script>
   export default {
     name: "ToolbarTop",
+    data() {
+      return {
+        cart: [],
+      };
+    },
+    created() {
+      let datosCart = JSON.parse(localStorage.getItem("cartshop"));
+      if (datosCart === null) {
+        this.cart = [];
+      } else {
+        this.cart = datosCart;
+        
+        console.log(this.cart);
+      }
+    },
+
     methods: {
       logout() {
         this.$store.dispatch("logout");
         //reurn
         return this.$router.replace("/login");
+      },
+      eliminarStorage(index) {
+        this.cart.splice(index, 1);
+
+        localStorage.setItem("cartshop", JSON.stringify(this.cart));
       },
     },
   };

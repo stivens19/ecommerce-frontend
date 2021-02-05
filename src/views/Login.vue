@@ -77,7 +77,7 @@
     data() {
       return {
         form: {
-          email: "stivens70espinoza@gmail.com",
+          email: "cliente@cliente.com",
           password: "12345678",
         },
       };

@@ -11,7 +11,7 @@
 
         <v-card-text class="headline font-weight-bold">
           "La mejor plataforma para implementar mi oficina , simple , sencilla y
-          con los precios accesibles , gracias COMPUTEC"
+          con los precios accesibles , gracias NETFIS"
         </v-card-text>
 
         <v-card-actions>
@@ -60,7 +60,7 @@
 
         <v-card-text class="headline font-weight-bold">
           "La mejor plataforma para implementar mi oficina , simple , sencilla y
-          con los precios accesibles , gracias COMPUTEC"
+          con los precios accesibles , gracias NETFIS"
         </v-card-text>
 
         <v-card-actions>
@@ -103,7 +103,7 @@
 
         <v-card-text class="headline font-weight-bold">
           "La mejor plataforma para implementar mi oficina , simple , sencilla y
-          con los precios accesibles , gracias COMPUTEC"
+          con los precios accesibles , gracias NETFIS"
         </v-card-text>
 
         <v-card-actions>

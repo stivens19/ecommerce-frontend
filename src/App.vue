@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <toolbar-top></toolbar-top>
+    <toolbar-top :key="$route.fullPath"></toolbar-top>
     <toolbar-bottom></toolbar-bottom>
 
-    <router-view />
-    
+    <router-view :key="$route.fullPath" />
+
     <footer-component></footer-component>
   </v-app>
 </template>
@@ -21,9 +21,6 @@
       ToolbarBottom,
       FooterComponent,
     },
-
-    data: () => ({
-      //
-    }),
+   
   };
 </script>

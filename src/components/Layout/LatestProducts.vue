@@ -42,12 +42,21 @@
         <v-divider class="mx-4"></v-divider>
 
         <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text>
+          <v-btn color="deep-purple lighten-2" text @click="agregarCarrito(product)">
             Agregar al carrito
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
+    <v-snackbar v-model="snackbar">
+        Agregado al carrito
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
   </v-row>
 </template>
 <script>
@@ -59,7 +68,9 @@
     name: "LatestProducts",
     data() {
       return {
-        products:[]
+        products:[],
+        cart:[],
+        snackbar: false,
       }
     },
     mounted() {
@@ -69,6 +80,20 @@
       async getProductsLatest(){
         const response=await axios.get('api/latestProducts');
         this.products=response.data.data;
+      },
+      agregarCarrito(product){
+        this.cart.push(product)
+        localStorage.setItem('cartshop',JSON.stringify(this.cart));
+        this.snackbar = true;
+      }
+    },
+    created() {
+      let datosCart=JSON.parse(localStorage.getItem('cartshop'));
+      if (datosCart === null) {
+        this.cart=[]
+      }else{
+        this.cart=datosCart;
+        console.log(this.cart)
       }
     },
   };
